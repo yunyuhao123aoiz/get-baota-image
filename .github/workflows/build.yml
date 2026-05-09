@@ -1,0 +1,15 @@
+name: Build Docker Image Archive
+on: [workflow_dispatch]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Pull image
+      run: docker pull btpanel/baota:lnmp
+    - name: Save image
+      run: docker save -o baota_lnmp.tar btpanel/baota:lnmp
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: baota-image
+        path: baota_lnmp.tar
