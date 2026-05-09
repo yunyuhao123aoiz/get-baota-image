@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Pull image
-      run: docker pull btpanel/baota:lnmp
+      run: docker pull --platform linux/arm64 btpanel/baota:lnmp
     - name: Save image
       run: docker save -o baota_lnmp.tar btpanel/baota:lnmp
     - name: Upload artifact
